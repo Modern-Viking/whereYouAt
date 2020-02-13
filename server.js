@@ -46,39 +46,44 @@
                   "Add departments",
                   "Add roles",
                   "Add employees",
-                  "Update employee roles"
+                  "Update employee roles",
+                  "Exit Program"
               ]
           })
           .then(function (answer) {
               switch (answer.action) {
   
-                  case "View department":
+                    case "View department":
                       viewDepartment();
                       break;
   
-                  case "View employees":
+                    case "View employees":
                       viewEmployees();
                       break;
   
-                  case "View roles":
+                    case "View roles":
                       viewRole();
                       break;
   
-                  case "Add departments":
+                    case "Add departments":
                       addDepartment();
                       break;
   
-                  case "Add roles":
+                    case "Add roles":
                       addRoles();
                       break;
   
-                  case "Add employees":
+                    case "Add employees":
                       addEmployees();
                       break;
   
-                  case "Update employee roles":
+                    case "Update employee roles":
                       updateEmployee();
                       break;
+
+                    case "Exit Program":
+                        exitProgram();
+                        break;
   
               }
           });
@@ -236,4 +241,8 @@
                    runData();
                });
        })
-   };       
+   };
+   
+   function exitProgram(){
+    connection.end();
+   };

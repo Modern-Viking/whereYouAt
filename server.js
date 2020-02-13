@@ -233,6 +233,7 @@
            ])
                .then(function (answer) {
                    console.log(answer);
+                   runData();
                });
        })
    };       

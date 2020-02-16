@@ -47,6 +47,7 @@
                   "Add roles",
                   "Add employees",
                   "Update employee roles",
+                  "See all employees",
                   "Exit Program"
               ]
           })
@@ -84,6 +85,10 @@
                     case "Update employee roles":
                       updateEmployee();
                       break;
+
+                    case "See all employees":
+                        showAllEmployees();
+                        break;
 
                     case "Exit Program":
                         exitProgram();
@@ -258,6 +263,15 @@
                });
        })
    };
+
+   function showAllEmployees() {
+    var query = "SELECT e.id AS employee_id, first_name, last_name, title, salary, d.name AS department_name FROM employee AS e JOIN role AS r ON r.id = role_id JOIN department AS d ON department_id = d.id;";
+    connection.query(query, function (err, res) {
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i].employee_id + " | " + res[i].first_name + " | " + res[i].last_name + " | " + res[i].title + " | " + res[i].salary + " | " + res[i].department_name);
+        }
+    }
+    )};
    
    function exitProgram(){
     connection.end();

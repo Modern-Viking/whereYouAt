@@ -8,7 +8,7 @@
   
     user: "root",
   
-    password: "Eubanks715",
+    password: "",
     database: "employee_tracker_DB"
   });
   
@@ -60,6 +60,10 @@
                     case "View employees":
                       viewEmployees();
                       break;
+
+                    // case "View employees by manager":
+                    //     viewEmployeesByManager();
+                    //     break;
   
                     case "View roles":
                       viewRole();
@@ -110,6 +114,18 @@
           runData();
       });
   }
+
+//     function viewEmployeesByManager(){
+//         var query = "SELECT * from manager where manager = ?";
+//       connection.query(query, function (err, res) {
+//           for (var i = 0; i < res.length; i++) {
+//               console.log(res[i].first_name + " " + res[i].last_name);
+//           }
+//           runData();
+//       });
+//   };
+
+
   function viewRole() {
       var query = "SELECT title FROM role";
       connection.query(query, function (err, res) {

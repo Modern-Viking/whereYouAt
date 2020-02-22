@@ -1,5 +1,6 @@
   var mysql = require("mysql");
   var inquirer = require("inquirer");
+  const table = require("console.table")
 
   var connection = mysql.createConnection({
     host: "localhost",
@@ -8,7 +9,7 @@
   
     user: "root",
   
-    password: "",
+    password: "Eubanks715",
     database: "employee_tracker_DB"
   });
   
@@ -27,7 +28,7 @@
       var query = "SELECT e.id AS employee_id, first_name, last_name, title, salary, d.name AS department_name FROM employee AS e JOIN role AS r ON r.id = role_id JOIN department AS d ON department_id = d.id;";
       connection.query(query, function (err, res) {
           for (var i = 0; i < res.length; i++) {
-              console.log(res[i].employee_id + " | " + res[i].first_name + " | " + res[i].last_name + " | " + res[i].title + " | " + res[i].salary + " | " + res[i].department_name);
+              console.table(res[i].employee_id + " | " + res[i].first_name + " | " + res[i].last_name + " | " + res[i].title + " | " + res[i].salary + " | " + res[i].department_name);
           }
       }
       )};
@@ -105,7 +106,7 @@
       var query = "SELECT name FROM department";
       connection.query(query, function (err, res) {
           for (var i = 0; i < res.length; i++) {
-              console.log(res[i].name);
+              console.table(res[i].name);
           }
           runData();
       });
@@ -114,7 +115,7 @@
       var query = "SELECT first_name, last_name FROM employee";
       connection.query(query, function (err, res) {
           for (var i = 0; i < res.length; i++) {
-              console.log(res[i].first_name + " " + res[i].last_name);
+              console.table(res[i].first_name + " " + res[i].last_name);
           }
           runData();
       });
@@ -135,7 +136,7 @@
       var query = "SELECT title FROM role";
       connection.query(query, function (err, res) {
           for (var i = 0; i < res.length; i++) {
-              console.log(res[i].title);
+              console.table(res[i].title);
           }
           runData();
       });
@@ -268,10 +269,12 @@
     var query = "SELECT e.id AS employee_id, first_name, last_name, title, salary, d.name AS department_name FROM employee AS e JOIN role AS r ON r.id = role_id JOIN department AS d ON department_id = d.id;";
     connection.query(query, function (err, res) {
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i].employee_id + " | " + res[i].first_name + " | " + res[i].last_name + " | " + res[i].title + " | " + res[i].salary + " | " + res[i].department_name);
+            console.table(res[i].employee_id + " | " + res[i].first_name + " | " + res[i].last_name + " | " + res[i].title + " | " + res[i].salary + " | " + res[i].department_name);
         }
     }
-    )};
+    )
+    runData();
+};
    
    function exitProgram(){
     connection.end();
